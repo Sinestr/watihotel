@@ -17,37 +17,12 @@ namespace WatiHotel.API
         
 
         // GET api/<controller>/5
-        [Route("test/GetObject")]
+        [Route("data")]
         [HttpGet]
-        public Data Get()
+        public Data GetAllData()
         {
             Data mesData = new Data();
-            List<Destination> destinations = new List<Destination>();
-            List<Hotel> hotels = new List<Hotel>();
-            ArrayList Reservations = new ArrayList();
-
-            Destination uneDestinationA = new Destination();
-            uneDestinationA.City = "LosAngeles";
-            uneDestinationA.Country = "USA";
-            uneDestinationA.Id = 1;
-
-            Hotel unHotelA = new Hotel();
-            unHotelA.Id = 1;
-            unHotelA.Name = "Foruml1";
-            unHotelA.Price = 40.00;
-            unHotelA.Room_available = 10;
-            unHotelA.Room_max = 12;
-            unHotelA.Address = "425 Evergreen Terasse";
-            unHotelA.Destination = 1;
-
-            hotels.Add(unHotelA);
-            hotels.Add(unHotelA);
-            destinations.Add(uneDestinationA);
-            mesData.Hotels = hotels;
-            mesData.Destinations = destinations;
-
             return mesData;
-
         }
 
         // POST api/<controller>

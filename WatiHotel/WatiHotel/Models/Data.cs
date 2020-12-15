@@ -19,7 +19,32 @@ namespace WatiHotel.Models
         #endregion
 
         #region Constructor
-        public Data() { }
+        public Data()
+        {
+            List<Destination> destinations = new List<Destination>();
+            List<Hotel> hotels = new List<Hotel>();
+            List<Reservation> Reservations = new List<Reservation>();
+
+            Destination uneDestinationA = new Destination();
+            uneDestinationA.City = "LosAngeles";
+            uneDestinationA.Country = "USA";
+            uneDestinationA.Id = 1;
+
+            Hotel unHotelA = new Hotel();
+            unHotelA.Id = 1;
+            unHotelA.Name = "Foruml1";
+            unHotelA.Price = 40.00;
+            unHotelA.Room_available = 10;
+            unHotelA.Room_max = 12;
+            unHotelA.Address = "425 Evergreen Terasse";
+            unHotelA.Destination = 1;
+
+            hotels.Add(unHotelA);
+            hotels.Add(unHotelA);
+            destinations.Add(uneDestinationA);
+            this.Hotels = hotels;
+            this.Destinations = destinations;
+        }
         #endregion
 
         #region Properties
