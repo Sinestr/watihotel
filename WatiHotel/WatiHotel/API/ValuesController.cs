@@ -14,15 +14,36 @@ namespace WatiHotel.API
     public class ValuesController : ApiController
     {
         // GET api/<controller>
-        
-
-        // GET api/<controller>/5
-        [Route("data")]
+        [Route("watiHotel")]
         [HttpGet]
         public Data GetAllData()
         {
             Data mesData = new Data();
             return mesData;
+        }
+
+        [Route("watiHotel/hotels")]
+        [HttpGet]
+        public List<Hotel> GetAllHotel()
+        {
+            Data mesData = new Data();
+            return mesData.Hotels;
+        }
+
+        [Route("watiHotel/reservations")]
+        [HttpGet]
+        public List<Reservation> GetAllReservations()
+        {
+            Data mesData = new Data();
+            return mesData.Reservations;
+        }
+
+        [Route("watiHotel/Destination")]
+        [HttpGet]
+        public List<Destination> GetAllDestinations()
+        {
+            Data mesData = new Data();
+            return mesData.Destinations;
         }
 
         // POST api/<controller>
