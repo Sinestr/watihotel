@@ -2,33 +2,131 @@
   "data":
   {
     "hotels":
-    {
-      "id": 1,
-      "name": "",
-      "description" : "",
+    [
+      {
+        "id": 1,
+        "name": "Hotel Marin Contact Hotel",
+        "description" : "Hôtel low cost classique proposant chambres sobres et modernes avec télévision à écran plat et Wi-Fi gratuit.",
+        "destination" : 1,
+        "address": "102 Avenue Robert Buron",
+        "price" : 77,
+        "room_available": 30,
+        "room_max": 30,
+        "image" : "https://lh3.googleusercontent.com/p/AF1QipMLnzn6zVZ_mk0Obgl5uyGKPUwYQQy0f9h0Y3as=w296-h202-n-k-rw-no-v1"
+      },
+      {
+      "id": 2,
+      "name": "Hôtel Restaurant Spa Perier Du Bignon",
+      "description" : "Hôtel du XIXe siècle avec chambres raffinées, piscine extérieure et restaurant élégant.",
       "destination" : 1,
-      "address": "",
-      "price" : 0,
-      "room_available": 0,
-      "room_max": 0,
-      "image" : ""
-    },
+      "address": "7 Rue du Marchis",
+      "price" : 118,
+      "room_available": 50,
+      "room_max": 50,
+      "image" : "https://lh3.googleusercontent.com/p/AF1QipOsBE7khDdkbHtIu_iWWX5n4z7LjiriwtMmdG0L=w296-h202-n-k-rw-no-v1"
+      },
+      {
+      "id": 3,
+      "name": "Four Seasons Hôtel George V Paris",
+      "description" : "Hôtel haut de gamme richement décoré, chambres/suites élégantes, restaurants réputés, bar chic et spa de luxe.",
+      "destination" : 2,
+      "address": "31 Avenue George V",
+      "price" : 970,
+      "room_available": 120,
+      "room_max": 120,
+      "image" : "https://lh3.googleusercontent.com/p/AF1QipM9KBbqwWXG2-I5_WfSg_YxrJe8l404ug9V7niG=w296-h202-n-k-rw-no-v1"
+      },
+      {
+        "id": 4,
+        "name": "Vice Versa",
+        "description" : "Hôtel de charme luxueux, chambres sur le thème des péchés capitaux, Wi-Fi gratuit, salon commun et hammam.",
+        "destination" : 2,
+        "address": "213 Rue de la Croix Nivert",
+        "price" : 90,
+        "room_available": 75,
+        "room_max": 75,
+        "image" : "https://lh3.googleusercontent.com/proxy/_a39aHqwne9swd1cXZiYDE9fmhaV9CrKYtgIiPrfUfoNtq9h9r27Vtngl8xYpLyDE73Csba7jp-ZhpjWSnb7M6y4JNb4DR47afUOFE86Z2exiZQbOermc7kNay0kfLzuJZ-t4m77Pz0AOvvaTs-iiNXBXfs3Dw=w296-h202-n-k-rw-no-v1"
+      },
+      {
+        "id": 5,
+        "name": "hôtelF1 Saint Denis Centre Basilique",
+        "description" : "Chambres épurées avec salle de bain attenante pour certaines, salle à manger lumineuse et parking gratuit.",
+        "destination" : 3,
+        "address": "11 Avenue Lénine",
+        "price" : 36,
+        "room_available": 150,
+        "room_max": 150,
+        "image" : "https://lh3.googleusercontent.com/proxy/PKAcW8C0-KXPDYmuvCwgtdofsiSZuJBQ_cEQNxcKw4eWvbzi0dG9UzUC42vYfj3_Nlt-On_IPNIGeM0Y94PmGY8ODBzbSBrkjYTGLdof6EZRb7LMgAcjTNH9LCFe-WyPOEwUUoSnmP6tk_s0NgASA5vjtGYtqw=w296-h202-n-k-rw-no-v1"
+      },
+      {
+        "id": 6,
+        "name": "Hôtel Ibis Saint-Denis Stade Ouest",
+        "description" : "Hôtel simple comprenant restaurant, bar et chambres fonctionnelles avec TV à écran plat et Wi-Fi gratuit.",
+        "destination" : 1,
+        "address": "La Plaine Saulnier, 20 Rue Jules Saulnier, 93200 Saint-Denis",
+        "price" : 44,
+        "room_available": 80,
+        "room_max": 80,
+        "image" : "https://lh3.googleusercontent.com/proxy/KDbSefPC9iJkxMOwiXpMGVTeIYr-ubaEtaet0vnBGDHi7-CVrY8j-piIywD2o71t92mywJ4lBFAxnqTPmQ5KD5wCZjHKNm24fgy0wWi4IsXlgXgEQRGVPqac_z6YfTXofuWHTObyCA0bXjd4BLgDj31tiIauwQ=w296-h202-n-k-rw-no-v1"
+      },
+      {
+        "id": 7,
+        "name": "Four Seasons Hotel San Francisco",
+        "description" : "Chambres chics dans hôtel haut de gamme avec spa, accès à un club de sport et bar-restaurant élégant.",
+        "destination" : 4,
+        "address": "757 Market St, San Francisco, CA 94103, États-Unis",
+        "price" : 456,
+        "room_available": 250,
+        "room_max": 250,
+        "image" : "https://lh3.googleusercontent.com/p/AF1QipNQWZQu6-3jxUvajVthqGbvfZPn45PmyQzxOrtl=w296-h202-n-k-rw-no-v1"
+      },
+      {
+        "id": 8,
+        "name": "Phoenix Hotel",
+        "description" : "Hôtel lumineux des années 50 avec patrimoine musical, piscine extérieure chauffée et parking gratuit.",
+        "destination" : 4,
+        "address": "601 Eddy St, San Francisco, CA 94109, États-Unis",
+        "price" : 112,
+        "room_available": 99,
+        "room_max": 100,
+        "image" : "https://lh3.googleusercontent.com/p/AF1QipPps1BTwN8n50T7C2LRE-yZnA1Fw1T3JSxhIYT4=w296-h202-n-k-rw-no-v1"
+      }
+    ],
 
     "reservations":
     {
       "id": 1,
-      "date_start": "",
-      "date_end": "",
-      "status": false,
-      "hotel" : 1
+      "date_start": "05/02/2021",
+      "date_end": "15/02/2021",
+      "status": true,
+      "hotel" : 8
     },
 
-    "destinations" :
-    {
-      "id" : 1,
-      "city" : "",
-      "country" : "",
-      "image" : ""
-    }
+    "destinations": [
+      {
+        "id": 1,
+        "city": "Laval",
+        "country": "France",
+        "image": "https://lh3.googleusercontent.com/proxy/IK3AgOf1COpWdnlPpSn4qz72IrLU-euxs4svwnF7bqlL7hXLXErX1wz5z2bzHdOdbYCs3QGoA40B0rG_MS8UTRuBC4AIf9Y2zl2ulv9-ENBHVOumwYMC2h4xxm-vQR-yw6dCPxiXydOaQ38MZ6dDOuCHGyTlSM3YwW8DkVqmWo6OtGjdRkTZtwpL6o1lwDArzenp3xsLc-JUvHYtPzn9x02ZGFA"
+      },
+      {
+        "id": 2,
+        "city": "Paris",
+        "country": "France",
+        "image": "https://photos.mandarinoriental.com/is/image/MandarinOriental/paris-2017-home?wid=2880&hei=1280&fmt=jpeg&crop=9,336,2699,1200&anchor=1358,936&qlt=75,0&fit=wrap&op_sharpen=0&resMode=sharp2&op_usm=0,0,0,0&iccEmbed=0&printRes=72"
+      },
+      {
+        "id": 3,
+        "city": "Saint-Denis",
+        "country": "France",
+        "image": "https://media.lesechos.com/api/v1/images/view/5ef0cbf18fe56f167125dab6/1280x720/0603437903022-web-tete.jpg"
+      },
+      {
+        "id": 4,
+        "city": "San Fransico",
+        "country": "United States",
+        "image": "https://fr.sx-magazine-wp.sixt.io/magazine/wp-content/uploads/sites/3/2018/05/san-francisco-3394456_1920.jpg"
+      }
+    ]
   }
 }
