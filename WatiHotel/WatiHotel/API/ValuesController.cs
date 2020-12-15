@@ -13,36 +13,103 @@ namespace WatiHotel.API
     [Route("test")]
     public class ValuesController : ApiController
     {
-        // GET api/<controller>
+        Data mesData = new Data();
+
+        /// <summary>
+        ///     Obtenir 3 listes comportant respectivement les hôtels, les destinations et les réservations
+        /// </summary>
+        /// <returns></returns>
         [Route("watiHotel")]
         [HttpGet]
         public Data GetAllData()
         {
-            Data mesData = new Data();
             return mesData;
         }
 
+        /// <summary>
+        ///     Obtenir la liste de tout les hôtels.
+        /// </summary>
+        /// <returns></returns>
         [Route("watiHotel/hotels")]
         [HttpGet]
-        public List<Hotel> GetAllHotel()
+        public List<Hotel> GetAllHotels()
         {
-            Data mesData = new Data();
             return mesData.Hotels;
         }
 
+        /// <summary>
+        ///    Obtenir un hotel par son ID, si aucun hôtel n'existe avec cet ID le résultat sera null
+        /// </summary>
+        /// <returns></returns>
+        [Route("watiHotel/hotel/id/{idHotel}")]
+        [HttpGet]
+        public Hotel GetHotel(int idHotel)
+        {
+            Hotel result = null;
+            foreach(Hotel unHotel in mesData.Hotels)
+            {
+                if(unHotel.Id == idHotel)
+                {
+                    result = unHotel;
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        ///    Obtenir un hotel par son nom, si aucun hôtel n'existe avec ce nom le résultat sera null
+        /// </summary>
+        /// <returns></returns>
+        [Route("watiHotel/hotel/nom/{nomHotel}")]
+        [HttpGet]
+        public Hotel GetHotel(string nomHotel)
+        {
+            Hotel result = null;
+            foreach (Hotel unHotel in mesData.Hotels)
+            {
+                if (unHotel.Name.ToLower() == nomHotel.ToLower())
+                {
+                    result = unHotel;
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        ///     Obtenir la liste des réservations
+        /// </summary>
+        /// <returns></returns>
         [Route("watiHotel/reservations")]
         [HttpGet]
         public List<Reservation> GetAllReservations()
         {
-            Data mesData = new Data();
             return mesData.Reservations;
         }
 
-        [Route("watiHotel/Destination")]
+        /// <summary>
+        ///    Obtenir un hotel par son ID, si aucun hôtel n'existe avec cet ID le résultat sera null
+        /// </summary>
+        /// <returns></returns>
+        [Route("watiHotel/reservation/id/{idReservation}")]
+        [HttpGet]
+        public Reservation GetReservation(int idReservation)
+        {
+            Reservation result = null;
+            foreach (Reservation uneReservation in mesData.Reservations)
+            {
+                if (uneReservation.Id == idReservation)
+                {
+                    result = uneReservation;
+                }
+            }
+            return result;
+        }
+
+
+        [Route("watiHotel/destinations")]
         [HttpGet]
         public List<Destination> GetAllDestinations()
         {
-            Data mesData = new Data();
             return mesData.Destinations;
         }
 
