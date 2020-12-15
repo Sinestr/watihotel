@@ -76,6 +76,26 @@ namespace WatiHotel.API
         }
 
         /// <summary>
+        ///    Obtenir les réservations d'un hôtel par son id
+        /// </summary>
+        /// <returns></returns>
+        [Route("watiHotel/hotel/{idHotel}/reservations")]
+        [HttpGet]
+        public List<Reservation> GetHotelReservations(int idHotel)
+        {
+            List<Reservation> result = new List<Reservation>()
+                ;
+            foreach (Reservation uneReservation in mesData.Reservations)
+            {
+                if (uneReservation.IDHotel == idHotel)
+                {
+                    result.Add(uneReservation);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
         ///     Obtenir la liste des réservations
         /// </summary>
         /// <returns></returns>
@@ -87,7 +107,7 @@ namespace WatiHotel.API
         }
 
         /// <summary>
-        ///    Obtenir un hotel par son ID, si aucun hôtel n'existe avec cet ID le résultat sera null
+        ///    Obtenir une reservation par son ID, si aucune réservation n'existe avec cet ID le résultat sera null
         /// </summary>
         /// <returns></returns>
         [Route("watiHotel/reservation/id/{idReservation}")]
@@ -111,6 +131,25 @@ namespace WatiHotel.API
         public List<Destination> GetAllDestinations()
         {
             return mesData.Destinations;
+        }
+
+        /// <summary>
+        ///    Obtenir une destination par son ID, si aucune destination n'existe avec cet ID le résultat sera null
+        /// </summary>
+        /// <returns></returns>
+        [Route("watiHotel/destination/id/{idDestination}")]
+        [HttpGet]
+        public Destination GetDestination(int idDestination)
+        {
+            Destination result = null;
+            foreach(Destination uneDestination in mesData.Destinations)
+            {
+                if (uneDestination.Id == idDestination)
+                {
+                    result = uneDestination;
+                }
+            }
+            return result;
         }
 
         // POST api/<controller>

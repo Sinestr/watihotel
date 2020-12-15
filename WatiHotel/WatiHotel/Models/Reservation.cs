@@ -38,7 +38,7 @@ namespace WebService.WatiHotel
         /// <summary>
         /// Hotel associé à la réservation
         /// </summary>
-        private Hotel hotel;
+        private int idHotel;
 
 
         #endregion
@@ -62,7 +62,7 @@ namespace WebService.WatiHotel
         /// <summary>
         /// Obtient l'hotel associé à la réservation
         /// </summary>
-        public Hotel Hotel { get => hotel; set => hotel = value; }
+        public int IDHotel { get => idHotel; set => idHotel = value; }
 
         /// <summary>
         /// Obtient le statut de la réservation
