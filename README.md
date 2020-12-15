@@ -60,6 +60,7 @@ Toutes les ressources sont englobées dans une même balise "DATA".
 | id         | `integer`   | Numéro unique permettant d'identifier une réservation      
 | date_start | `date`      | Date à laquelle la réservation commence (chambre occupée)
 | date_end   | `date`      | Date à laquelle la réservation se termine (chambre occupée est de-nouveau disponible)
+| status     | `boolean`   | false = impayé | true = payé
 | hotel      | `object`    | Identifiant de l'hôtel associé
 
 *******
