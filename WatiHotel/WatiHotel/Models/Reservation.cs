@@ -4,10 +4,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 using System.ServiceModel.Web;
+using Newtonsoft.Json;
 
 namespace WebService.WatiHotel
 {
     [DataContract]
+    [JsonObject(MemberSerialization.OptOut)]
     public class Reservation
     {
         #region Fields
@@ -25,6 +27,13 @@ namespace WebService.WatiHotel
         /// Date de fin de la réservation
         /// </summary>
         private DateTime date_end;
+
+        /// <summary>
+        /// Permet de savoir si la reservation a été payée ou non
+        /// true = payée
+        /// false = non payée
+        /// </summary>
+        private bool status;
 
         /// <summary>
         /// Hotel associé à la réservation
@@ -54,6 +63,11 @@ namespace WebService.WatiHotel
         /// Obtient l'hotel associé à la réservation
         /// </summary>
         public Hotel Hotel { get => hotel; set => hotel = value; }
+
+        /// <summary>
+        /// Obtient le statut de la réservation
+        /// </summary>
+        public bool Status { get => status; set => status = value; }
         #endregion
     }
 }

@@ -1,0 +1,34 @@
+{
+  "data":
+  {
+    "hotels":
+    {
+      "id": 1,
+      "name": "",
+      "description" : "",
+      "destination" : 1,
+      "address": "",
+      "price" : 0,
+      "room_available": 0,
+      "room_max": 0,
+      "image" : ""
+    },
+
+    "reservations":
+    {
+      "id": 1,
+      "date_start": "",
+      "date_end": "",
+      "status": false,
+      "hotel" : 1
+    },
+
+    "destinations" :
+    {
+      "id" : 1,
+      "city" : "",
+      "country" : "",
+      "image" : ""
+    }
+  }
+}
