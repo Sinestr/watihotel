@@ -60,9 +60,9 @@ namespace WebService.WatiHotel
         public DateTime Date_end { get => date_end; set => date_end = value; }
 
         /// <summary>
-        /// Obtient l'hotel associé à la réservation
+        /// Obtient l'identifiant de l'hotel associé à la réservation
         /// </summary>
-        public int IDHotel { get => idHotel; set => idHotel = value; }
+        public int Hotel { get => idHotel; set => idHotel = value; }
 
         /// <summary>
         /// Obtient le statut de la réservation

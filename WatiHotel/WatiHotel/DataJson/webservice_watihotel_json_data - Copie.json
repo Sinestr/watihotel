@@ -1,0 +1,35 @@
+{
+  "Hotels": [
+    {
+      "Id": 1,
+      "Name": "Foruml1",
+      "Descritpion": null,
+      "Address": "425 Evergreen Terasse",
+      "Price": 40.0,
+      "Room_available": 10,
+      "Room_max": 12,
+      "Image": null,
+      "Destination": 1
+    },
+    {
+      "Id": 1,
+      "Name": "Foruml1",
+      "Descritpion": null,
+      "Address": "425 Evergreen Terasse",
+      "Price": 40.0,
+      "Room_available": 10,
+      "Room_max": 12,
+      "Image": null,
+      "Destination": 1
+    }
+  ],
+  "Destinations": [
+    {
+      "Id": 1,
+      "City": "LosAngeles",
+      "Country": "USA",
+      "Image": null
+    }
+  ],
+  "Reservations": null
+}

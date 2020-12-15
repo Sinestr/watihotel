@@ -21,6 +21,7 @@ namespace WatiHotel.Models
         #region Constructor
         public Data()
         {
+            /*
             List<Destination> destinations = new List<Destination>();
             List<Hotel> hotels = new List<Hotel>();
             List<Reservation> Reservations = new List<Reservation>();
@@ -44,6 +45,8 @@ namespace WatiHotel.Models
             destinations.Add(uneDestinationA);
             this.Hotels = hotels;
             this.Destinations = destinations;
+            */
+            
         }
         #endregion
 

@@ -59,7 +59,6 @@ namespace WebService.WatiHotel
 
         #endregion
 
-
         #region Properties
         /// <summary>
         /// Obtient l'identifiant de l'hôtel

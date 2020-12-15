@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,7 +17,20 @@ namespace WatiHotel.API
     [Route("test")]
     public class ValuesController : ApiController
     {
-        Data mesData = new Data();
+        private static readonly HttpClient client = new HttpClient();
+
+        Data mesData;
+
+
+        public Data MesData 
+        {
+            get
+            {
+                return JsonConvert.DeserializeObject<Data>(
+                    File.ReadAllText(@"D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\WEB_SERVICES\TP\0-WatiHotel\watihotel\WatiHotel\WatiHotel\DataJson\webservice_watihotel_json_data.json"));
+            }
+        }
+        
 
         /// <summary>
         ///     Obtenir 3 listes comportant respectivement les hôtels, les destinations et les réservations
@@ -23,7 +40,7 @@ namespace WatiHotel.API
         [HttpGet]
         public Data GetAllData()
         {
-            return mesData;
+            return MesData;
         }
 
         /// <summary>
@@ -34,7 +51,7 @@ namespace WatiHotel.API
         [HttpGet]
         public List<Hotel> GetAllHotels()
         {
-            return mesData.Hotels;
+            return MesData.Hotels;
         }
 
         /// <summary>
@@ -46,9 +63,9 @@ namespace WatiHotel.API
         public Hotel GetHotel(int idHotel)
         {
             Hotel result = null;
-            foreach(Hotel unHotel in mesData.Hotels)
+            foreach (Hotel unHotel in MesData.Hotels)
             {
-                if(unHotel.Id == idHotel)
+                if (unHotel.Id == idHotel)
                 {
                     result = unHotel;
                 }
@@ -65,7 +82,7 @@ namespace WatiHotel.API
         public Hotel GetHotel(string nomHotel)
         {
             Hotel result = null;
-            foreach (Hotel unHotel in mesData.Hotels)
+            foreach (Hotel unHotel in MesData.Hotels)
             {
                 if (unHotel.Name.ToLower() == nomHotel.ToLower())
                 {
@@ -85,9 +102,9 @@ namespace WatiHotel.API
         {
             List<Reservation> result = new List<Reservation>()
                 ;
-            foreach (Reservation uneReservation in mesData.Reservations)
+            foreach (Reservation uneReservation in MesData.Reservations)
             {
-                if (uneReservation.IDHotel == idHotel)
+                if (uneReservation.Hotel == idHotel)
                 {
                     result.Add(uneReservation);
                 }
@@ -115,7 +132,7 @@ namespace WatiHotel.API
         public Reservation GetReservation(int idReservation)
         {
             Reservation result = null;
-            foreach (Reservation uneReservation in mesData.Reservations)
+            foreach (Reservation uneReservation in MesData.Reservations)
             {
                 if (uneReservation.Id == idReservation)
                 {
@@ -142,7 +159,7 @@ namespace WatiHotel.API
         public Destination GetDestination(int idDestination)
         {
             Destination result = null;
-            foreach(Destination uneDestination in mesData.Destinations)
+            foreach (Destination uneDestination in MesData.Destinations)
             {
                 if (uneDestination.Id == idDestination)
                 {
@@ -153,18 +170,34 @@ namespace WatiHotel.API
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        [HttpPost]
+        public void doRevervation([FromBody] Reservation newReservation)
         {
+            List<Reservation> allReservations = mesData.Reservations;
+            List<Hotel> allHotels = mesData.Hotels;
+
+            //chercher l'hôtel par l'id et exec reserv dans le model de l'hôtel
+           
+
+            if (true)
+            {
+
+                allReservations.Add(newReservation);
+            }
+
+
         }
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody] string value)
         {
+
         }
 
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+
         }
     }
 }
