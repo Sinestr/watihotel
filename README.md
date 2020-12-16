@@ -19,6 +19,7 @@ Liste de tous les hôtels partenaires.
 * **destinations** : 
 Liste de toutes les destinations de tous les hôtels référencés. 
 
+#### **Adresse de l'api : http://watihotelapi.azurewebsites.net/**
 
 ## Modèles des ressources
 On entant par ressource, toutes les données par types qui transitent
@@ -125,28 +126,28 @@ des actions précises sur les données Wati Hotel (REQUETE POST).
 * **[Route("watiHotel")]**  
     * Liste de tous les hôtels partenaires, de toutes les destinations et de réservations.
     
-* **[Route("watiHotel/hotels")]** 
+* **http://watihotelapi.azurewebsites.net/watiHotel/hotels** 
     * Liste de toutes de tous les hôtels partenaires. 
     
-* **[Route("watiHotel/hotel/id/{idHotel}")]**
+* **http://watihotelapi.azurewebsites.net/watiHotel/hotel/id/{idHotel}**
     * Obtient un hôtel par son identifiant, si aucun hôtel n'existe avec cet ID le résultat sera null.
 
-* **[Route("watiHotel/hotel/nom/{nomHotel}")]**
+* **http://watihotelapi.azurewebsites.net/watiHotel/hotel/nom/{nomHotel}**
     * Obtenir un hotel par son nom, si aucun hôtel n'existe avec ce nom le résultat sera null.
 
-* **[Route("watiHotel/hotel/{idHotel}/reservations")]**
+* **http://watihotelapi.azurewebsites.net/watiHotel/hotel/{idHotel}/reservations**
     * Retourne toutes les réservations d'un hôtel par son identifiant.
     
-* **[Route("watiHotel/reservations")]**
+* **http://watihotelapi.azurewebsites.net/watiHotel/reservations**
     * Liste de toutes les réservations effectuées.   
     
-* **[Route("watiHotel/reservation/id/{idReservation}")]**
+* **http://watihotelapi.azurewebsites.net/watiHotel/reservation/id/{idReservation}*
     * Obtient une reservation par son identifiant, si aucune réservation n'existe avec cet ID le résultat sera null.
     
-* **[Route("watiHotel/destinations")]**
+* **http://watihotelapi.azurewebsites.net/watiHotel/destinations**
     * Liste de toutes les destinations possibles.   
     
-* **[Route("watiHotel/destination/id/{idDestination}")]**
+* **http://watihotelapi.azurewebsites.net/watiHotel/destination/id/{idDestination}**
     * Obtient une destination par son identifiant, si aucune destination n'existe avec cet ID le résultat sera null
     
 *****
