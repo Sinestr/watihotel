@@ -58,8 +58,8 @@ Toutes les ressources sont englobées dans une même balise "DATA".
 | Libelle    | Type        |  Description 
 | -----      |-----        | -----  
 | id         | `integer`   | Numéro unique permettant d'identifier une réservation      
-| date_start | `date`      | Date à laquelle la réservation commence (chambre occupée)
-| date_end   | `date`      | Date à laquelle la réservation se termine (chambre occupée est de-nouveau disponible)
+| date_start | `date`      | **"yyyy-MM-dd"** Date à laquelle la réservation commence (chambre occupée)
+| date_end   | `date`      | **""yyyy-MM-dd"** Date à laquelle la réservation se termine (chambre occupée est de-nouveau disponible)
 | status     | `boolean`   | false = impayé | true = payé
 | hotel      | `object`    | Identifiant de l'hôtel associé
 
@@ -74,6 +74,72 @@ Toutes les ressources sont englobées dans une même balise "DATA".
 | image      | `string`    | Chemin menant à l'image de la destination
 
 *******
+
+## Les routes et leurs fonctionnalités
+Ici une requete va permettre de récupérer des informations provenants 
+des données Wati Hôtel (REQUETE GET). Néanmoins, elle va aussi pouvoir effectuer
+des actions précises sur les données Wati Hotel (REQUETE POST).
+
+###Requêtes GET
+
+* **[Route("watiHotel")]**  
+    * Liste de tous les hôtels partenaires, de toutes les destinations et de réservations.
+    
+* **[Route("watiHotel/hotels")]** 
+    * Liste de toutes de tous les hôtels partenaires. 
+    
+* **[Route("watiHotel/hotel/id/{idHotel}")]**
+    * Obtient un hôtel par son identifiant, si aucun hôtel n'existe avec cet ID le résultat sera null.
+
+* **[Route("watiHotel/hotel/nom/{nomHotel}")]**
+    * Obtenir un hotel par son nom, si aucun hôtel n'existe avec ce nom le résultat sera null.
+
+* **[Route("watiHotel/hotel/{idHotel}/reservations")]**
+    * Retourne toutes les réservations d'un hôtel par son identifiant.
+    
+* **[Route("watiHotel/reservations")]**
+    * Liste de toutes les réservations effectuées.   
+    
+* **[Route("watiHotel/reservation/id/{idReservation}")]**
+    * Obtient une reservation par son identifiant, si aucune réservation n'existe avec cet ID le résultat sera null.
+    
+* **[Route("watiHotel/destinations")]**
+    * Liste de toutes les destinations possibles.   
+    
+* **[Route("watiHotel/destination/id/{idDestination}")]**
+    * Obtient une destination par son identifiant, si aucune destination n'existe avec cet ID le résultat sera null
+    
+*****
+    
+###Requêtes GET  
+
+#### Réserver un hôtel
+En effet le but de cette requête est d'envoyer une nouvelle réservation. 
+Pour cela il va falloir envoyer :
+ * une date de début de réservation
+ * une date de fin de réservation
+ * identifiant de l'hôtel, dans lequel la réservation souhaite se dérouler
+
+Toutes les données correspondantes (**cf. Model de ressources**).
+
+Si jamais la réservation ne s'éffectue pas, c'est qu'on retourne une erreur. 
+En voici la liste : 
+  ```
+  "error" : "Not Available" [type=string]
+  "message" : "Aucune chambre disponible pour cet hôtel" [type=string]
+  ```  
+
+```
+  "error" : "Not Found" [type=string]
+  "message" : "L'hôtel n'existe pas. Veuillez choisir un hôtel présent sur le liste !" [type=string]
+  ```
+
+  ```
+  "error" : "Error Date" [type=string]
+  "message" : "Dates de réservation incorrectes" [type=string]
+  ```
+
+
 
 ## Réponses des requêtes
 

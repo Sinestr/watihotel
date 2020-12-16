@@ -21,6 +21,17 @@ namespace WatiHotel.API
 
         Data mesData;
 
+        public struct Response
+        {
+            string error;
+            string message;
+
+            public Response(string uneError, string unMessage)
+            {
+                this.error = uneError;
+                this.message = unMessage;
+            }
+        }
 
         public Data MesData 
         {
@@ -143,6 +154,10 @@ namespace WatiHotel.API
         }
 
 
+        /// <summary>
+        ///     Obtenir la liste des destinations
+        /// </summary>
+        /// <returns></returns>
         [Route("watiHotel/destinations")]
         [HttpGet]
         public List<Destination> GetAllDestinations()
@@ -169,23 +184,51 @@ namespace WatiHotel.API
             return result;
         }
 
+        /// <summary>
+        ///     Permet de créer une nouvelle reservation selon les disponibilités de l'hôtel
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         // POST api/<controller>
         [HttpPost]
-        public void doRevervation([FromBody] Reservation newReservation)
+        public Response PostReservation([FromBody] DateTime date_debut, DateTime date_fin, int id_hotel)
         {
-            List<Reservation> allReservations = mesData.Reservations;
-            List<Hotel> allHotels = mesData.Hotels;
+            Response result;
 
-            //chercher l'hôtel par l'id et exec reserv dans le model de l'hôtel
-           
+            Hotel monHotel = mesData.Hotels.Find(Hotel => Hotel.Id == id_hotel);
 
-            if (true)
+            //check si l'hôtel de la réservation existe bien
+            if (monHotel != null)
             {
+                //check si l'hôtel possède au moins une chambre de libre
+                if (monHotel.Room_available > 0)
+                {
+                    //ajout de la réservation
+                    mesData.Reservations.Add(new Reservation
+                    {
+                        Id = 0,
+                        Date_start = date_debut,
+                        Date_end = date_fin,
+                        Hotel = id_hotel,
+                        Status = true,
 
-                allReservations.Add(newReservation);
+                    });
+
+                    monHotel.Start_Reserve();
+                }
+                else
+                {
+                    result = new Response("error: Not Available", "Aucune chambre disponible pour cet hôtel");
+                }
+            }
+            else
+            {
+                result = new Response("error: Not Available", "L'hôtel n'existe pas. Veuillez choisir un hôtel présent sur le liste !");
             }
 
+            result = new Response("Success: Reserversation complete", "La réservation pour l'hôtel " + monHotel.Name + " a bien été prise en compte !");
 
+            return result;
         }
 
         // PUT api/<controller>/5
