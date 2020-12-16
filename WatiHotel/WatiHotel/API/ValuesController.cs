@@ -19,17 +19,8 @@ namespace WatiHotel.API
     {
         private static readonly HttpClient client = new HttpClient();
 
-        public Data MesData 
-        {
-            get
-            {
-                //D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\WEB_SERVICES\TP\0-WatiHotel\watihotel\WatiHotel\WatiHotel\DataJson\webservice_watihotel_json_data.json
-                return JsonConvert.DeserializeObject<Data>(
+        Data MesData = JsonConvert.DeserializeObject<Data>(
                     File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\webservice_watihotel_json_data.json")));
-                
-            }
-        }
-        
 
         /// <summary>
         ///     Obtenir 3 listes comportant respectivement les hôtels, les destinations et les réservations
@@ -181,7 +172,9 @@ namespace WatiHotel.API
         [HttpPost]
         public Response PostReservation(DateTime date_debut, DateTime date_fin, int id_hotel)
         {
+            //Response contenant le type de réponse et le message
             Response result = new Response("","");
+
             Boolean estDisponible = false;
 
             Hotel monHotel = MesData.Hotels.Find(Hotel => Hotel.Id == id_hotel);
@@ -189,31 +182,34 @@ namespace WatiHotel.API
             //check si l'hôtel de la réservation existe bien
             if (monHotel != null)
             {
+                // On instancie la collection de dispon si elle est vide
                 if (monHotel.Disponibilites == null)
                 {
                     monHotel.Disponibilites = new List<Disponible>();
                 }
+                //Pour chaque jour dans cette période de reservation
                 foreach (DateTime day in EachDay(date_debut, date_fin))
                 {
                     
                     Disponible uneDisponible;
+                    // Si un objet disponible pour la date en cours existe
                     if(monHotel.Disponibilites.Find(Disponible => Disponible.Date_Room == day) != null) 
                     {
                         uneDisponible = monHotel.Disponibilites.Find(Disponible => Disponible.Date_Room == day);
                     }
-                    else
+                    else //Sinon on la créer
                     {
                         uneDisponible = null;
                     }
 
                     if (uneDisponible != null)
                     {
-                        if (uneDisponible.Room_available > 0)
+                        if (uneDisponible.Room_available > 0) //On retire 1 au nombre total de chambre pour cette dispo
                         {
                             estDisponible = true;
                             uneDisponible.Room_available = uneDisponible.Room_available - 1;
                         }
-                        else
+                        else //Sinon pas disponible
                         {
                             estDisponible = false;
                             result = new Response("error: Not Available", "Plus de chambre disponible à cette période");
@@ -221,6 +217,7 @@ namespace WatiHotel.API
                     }
                     else
                     {
+                        // Si la dispo n'existe pas encore dans la collection des dispos de l'hôtel
                         monHotel.Disponibilites.Add(new Disponible
                         {
                             Date_Room = day,
@@ -249,6 +246,7 @@ namespace WatiHotel.API
                 });
                 result = new Response("Success: Reserversation complete", "La réservation pour l'hôtel " + monHotel.Name + " a bien été prise en compte !");
             }
+            MesData.Save();
             return result;
         }
 
