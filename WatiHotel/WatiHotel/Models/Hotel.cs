@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
+using WatiHotel.Models;
 
 namespace WebService.WatiHotel
 {
@@ -38,11 +39,6 @@ namespace WebService.WatiHotel
         private double price;
 
         /// <summary>
-        /// Nombre de chambres encore disponible dans l'hôtel
-        /// </summary>
-        private int room_available;
-
-        /// <summary>
         /// Nombre de chambre maximum disponible dans l'hôtel
         /// </summary>
         private int room_max;
@@ -56,6 +52,11 @@ namespace WebService.WatiHotel
         /// Destination liée à l'hôtel (ville / pays)
         /// </summary>
         private int idDestination;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private List<Disponible> _Disponibilites;
 
         #endregion
 
@@ -86,11 +87,6 @@ namespace WebService.WatiHotel
         public double Price { get => price; set => price = value; }
 
         /// <summary>
-        /// Obtient le nombre de chambre encore disponible dans l'hôtel
-        /// </summary>
-        public int Room_available { get => room_available; set => room_available = value; }
-
-        /// <summary>
         /// Obtient le nombre de chambre maximum disponible dans l'hôtel
         /// </summary>
         public int Room_max { get => room_max; set => room_max = value; }
@@ -105,33 +101,11 @@ namespace WebService.WatiHotel
         /// </summary>
         public int Destination { get => idDestination; set => idDestination = value; }
 
-        #endregion
-
-        #region Methods 
         /// <summary>
-        /// Réservation d'une chambre d'hôtel
+        /// 
         /// </summary>
-        public void Start_Reserve()
-        {
-            //check si au moins une chambre est toujours dispo avant de pouvoir effetcuer la réservation
-            if (this.Room_available > 0)
-            {
-                this.Room_available--;
-            }
-        }
+        public List<Disponible> Disponibilites { get => _Disponibilites; set => _Disponibilites = value; }
 
-        /// <summary>
-        /// Fin d'une réservation d'une chambre d'hôtel
-        /// notament appelée quand la date de réservation est terminée
-        /// </summary>
-        public void End_Reserve()
-        {
-            //check si au moins une chambre est toujours dispo avant de pouvoir effetcuer la réservation
-            if (this.Room_available > 0 && this.Room_available <= this.Room_max)
-            {
-                this.Room_available++;
-            }
-        }
         #endregion
     }
 }

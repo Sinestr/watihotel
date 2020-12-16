@@ -40,7 +40,6 @@ namespace WebService.WatiHotel
         /// </summary>
         private int idHotel;
 
-
         #endregion
 
         #region Properties

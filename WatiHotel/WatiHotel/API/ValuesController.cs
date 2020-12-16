@@ -197,29 +197,35 @@ namespace WatiHotel.API
 
             Hotel monHotel = mesData.Hotels.Find(Hotel => Hotel.Id == id_hotel);
 
+            List<Reservation> allReservation =
+                (from num in mesData.Reservations
+                 where num.Date_start < date_debut && num.Date_end > date_fin && num.Hotel == id_hotel
+                 select num).ToList();
+
             //check si l'hôtel de la réservation existe bien
             if (monHotel != null)
             {
-                //check si l'hôtel possède au moins une chambre de libre
-                if (monHotel.Room_available > 0)
+                foreach (DateTime day in EachDay(date_debut, date_fin))
                 {
-                    //ajout de la réservation
-                    mesData.Reservations.Add(new Reservation
+                    if (monHotel.Disponibilites.Find(Disponible => Disponible.Date_Room == day) != null )
                     {
-                        Id = 0,
-                        Date_start = date_debut,
-                        Date_end = date_fin,
-                        Hotel = id_hotel,
-                        Status = true,
+                        //ajout de la réservation
+                        mesData.Reservations.Add(new Reservation
+                        {
+                            Id = allReservation.Count() + 1,
+                            Date_start = date_debut,
+                            Date_end = date_fin,
+                            Hotel = id_hotel,
+                            Status = true,
 
-                    });
-
-                    monHotel.Start_Reserve();
+                        });
+                    }
+                    else
+                    {
+                        result = new Response("error: Not Available", "Aucune chambre disponible pour cet hôtel");
+                    }
                 }
-                else
-                {
-                    result = new Response("error: Not Available", "Aucune chambre disponible pour cet hôtel");
-                }
+                
             }
             else
             {
@@ -242,5 +248,14 @@ namespace WatiHotel.API
         {
 
         }
+
+        #region Methods
+        public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
+        {
+            for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
+                yield return day;
+        }
+
+        #endregion
     }
 }
