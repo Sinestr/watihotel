@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
@@ -55,6 +56,19 @@ namespace WatiHotel.Models
         public List<Destination> Destinations { get => destinations; set => destinations = value; }
         public List<Reservation> Reservations { get => reservations; set => reservations = value; }
 
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Sauvegarde le contexte dans un fichier.
+        /// </summary>
+        public void Save()
+        {
+            File.WriteAllText(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\webservice_watihotel_json_data.json"),
+                JsonConvert.SerializeObject(this)
+            );
+        }
         #endregion
     }
 }
