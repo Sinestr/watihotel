@@ -86,7 +86,7 @@ json_sample :
 
 *******
 
-#### Ressources d'une réservation 
+#### Ressources d'une disponibilité 
 | Libelle        | Type        |  Description 
 | -----          |-----        | -----  
 | Room_available | `integer`   | Nombre de chambres encore disponible dans l'hôtel.
@@ -120,7 +120,7 @@ Ici une requete va permettre de récupérer des informations provenants
 des données Wati Hôtel (REQUETE GET). Néanmoins, elle va aussi pouvoir effectuer
 des actions précises sur les données Wati Hotel (REQUETE POST).
 
-####Requêtes GET
+### Requêtes GET
 
 * **[Route("watiHotel")]**  
     * Liste de tous les hôtels partenaires, de toutes les destinations et de réservations.
@@ -151,7 +151,7 @@ des actions précises sur les données Wati Hotel (REQUETE POST).
     
 *****
     
-###Requêtes GET  
+### Requêtes GET  
 
 #### Réserver un hôtel
 En effet le but de cette requête est d'envoyer une nouvelle réservation. 
