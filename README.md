@@ -23,15 +23,47 @@ Liste de toutes les destinations de tous les hôtels référencés.
 ## Modèles des ressources
 On entant par ressource, toutes les données par types qui transitent
 dans le fichier JSON du web service. 
-Toutes les ressources sont englobées dans une même balise "DATA".
+Toutes les ressources sont englobées dans un objet "DATA".
+
+json_sample :
 
   ```
   {
-    "data" : 
+    "Hotels":
     {
-        "hotels" : {...}
-        "destinations" : {...}
-        "reservations" : {...}
+      "Id": 1,
+      "Name": "",
+      "Description" : "",
+      "Destination" : 1,
+      "Address": "",
+      "Price" : 0,
+      "Room_available": 0,
+      "Room_max": 0,
+      "Image" : "",
+      "Disponible": object,
+    },
+  
+    "Disponible":
+    {
+      "Room_available": 0,
+      "Date_dispo": "yyyy-MM-dd",
+    },
+  
+    "Reservations":
+    {
+      "Id": 1,
+      "Date_start": "yyyy-MM-dd",
+      "Date_end": "yyyy-MM-dd",
+      "Status": false,
+      "Hotel" : 1
+    },
+  
+    "Destinations" :
+    {
+      "Id" : 1,
+      "City" : "",
+      "Country" : "",
+      "Image" : ""
     }
   }
   ```
@@ -42,36 +74,44 @@ Toutes les ressources sont englobées dans une même balise "DATA".
 #### Ressources d'un hôtel  
 | Libelle         | Type        |  Description 
 | -----           |-----        | -----
-| id              | `integer`   | Numéro unique permettant d'identifier un hôtel
-| name            | `string`    | Nom de l'hôtel
-| description     | `string`    | Courte description de l'hotel
-| destination     | `integer`   | Identifiant de la destination liée à l'hôtel
-| address         | `string`    | Adresse complète de l'hotel (n° voie + rue)
-| price           | `decimal`   | Prix en euro d'une reservation d'une chambre. <br> Le tarif est le même pour toutes les chambres de l'hôtel. <br>
-| room_available  | `integer`   | Nombre de chambres encore disponible dans l'hôtel.<br> Ne peut pas être supérieur à la capacité max. <br> Si à 0 l'hôtel devient indisponible
-| room_max        | `integer`   | Nombre de chambres maximum d'un hôtel
-| image           | `string`    | Chemin menant à l'image de présentation de l'hôtel
+| Id              | `integer`   | Numéro unique permettant d'identifier un hôtel
+| Name            | `string`    | Nom de l'hôtel
+| Description     | `string`    | Courte description de l'hotel
+| Destination     | `integer`   | Identifiant de la destination liée à l'hôtel
+| Address         | `string`    | Adresse complète de l'hotel (n° voie + rue)
+| Price           | `decimal`   | Prix en euro d'une reservation d'une chambre. <br> Le tarif est le même pour toutes les chambres de l'hôtel. <br>
+| Room_max        | `integer`   | Nombre de chambres maximum d'un hôtel
+| Image           | `string`    | Chemin menant à l'image de présentation de l'hôtel
+| Disponible      | `object`    | Liste des dates réservées dans l'hôtel
+
+*******
+
+#### Ressources d'une réservation 
+| Libelle        | Type        |  Description 
+| -----          |-----        | -----  
+| Room_available | `integer`   | Nombre de chambres encore disponible dans l'hôtel.
+| Date_room      | `date`      | **"yyyy-MM-dd"** Date à laquelle la réservation commence (chambre occupée)
 
 *******
 
 #### Ressources d'une réservation 
 | Libelle    | Type        |  Description 
 | -----      |-----        | -----  
-| id         | `integer`   | Numéro unique permettant d'identifier une réservation      
-| date_start | `date`      | **"yyyy-MM-dd"** Date à laquelle la réservation commence (chambre occupée)
-| date_end   | `date`      | **""yyyy-MM-dd"** Date à laquelle la réservation se termine (chambre occupée est de-nouveau disponible)
-| status     | `boolean`   | false = impayé | true = payé
-| hotel      | `object`    | Identifiant de l'hôtel associé
+| Id         | `integer`   | Numéro unique permettant d'identifier une réservation      
+| Date_start | `date`      | **"yyyy-MM-dd"** Date à laquelle la réservation commence (chambre occupée)
+| Date_end   | `date`      | **"yyyy-MM-dd"** Date à laquelle la réservation se termine (chambre occupée est de-nouveau disponible)
+| Status     | `boolean`   | false = impayé | true = payé
+| Hotel      | `integer`   | Identifiant de l'hôtel associé
 
 *******
 
-#### Ressources d'une destination 
+##### Ressources d'une destination 
 | Libelle    | Type        |  Description 
 | -----      |-----        | -----  
-| id         | `integer`   | Numéro unique permettant d'identifier une destination      
-| city       | `string`    | Nom de la ville de la destination
-| country    | `string`    | Nom du pays de la destination 
-| image      | `string`    | Chemin menant à l'image de la destination
+| Id         | `integer`   | Numéro unique permettant d'identifier une destination      
+| City       | `string`    | Nom de la ville de la destination
+| Country    | `string`    | Nom du pays de la destination 
+| Image      | `string`    | Chemin menant à l'image de la destination
 
 *******
 
@@ -80,7 +120,7 @@ Ici une requete va permettre de récupérer des informations provenants
 des données Wati Hôtel (REQUETE GET). Néanmoins, elle va aussi pouvoir effectuer
 des actions précises sur les données Wati Hotel (REQUETE POST).
 
-###Requêtes GET
+####Requêtes GET
 
 * **[Route("watiHotel")]**  
     * Liste de tous les hôtels partenaires, de toutes les destinations et de réservations.
@@ -204,5 +244,3 @@ En voici la liste :
   }
   ```
 *******
-
-###### Author: *Vo Tran Thanh Luong*. Also, I would like to thank all the contributors/translators for your work making this greater.

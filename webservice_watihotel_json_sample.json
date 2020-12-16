@@ -1,34 +1,38 @@
 {
-  "data":
+  "Hotels":
   {
-    "hotels":
-    {
-      "id": 1,
-      "name": "",
-      "description" : "",
-      "destination" : 1,
-      "address": "",
-      "price" : 0,
-      "room_available": 0,
-      "room_max": 0,
-      "image" : ""
-    },
+    "Id": 1,
+    "Name": "",
+    "Description" : "",
+    "Destination" : 1,
+    "Address": "",
+    "Price" : 0,
+    "Room_available": 0,
+    "Room_max": 0,
+    "Image" : "",
+    "Disponible": object,
+  },
 
-    "reservations":
-    {
-      "id": 1,
-      "date_start": "",
-      "date_end": "",
-      "status": false,
-      "hotel" : 1
-    },
+  "Disponible":
+  {
+    "Room_available": 0,
+    "Date_dispo": "",
+  },
 
-    "destinations" :
-    {
-      "id" : 1,
-      "city" : "",
-      "country" : "",
-      "image" : ""
-    }
+  "Reservations":
+  {
+    "Id": 1,
+    "Date_start": "",
+    "Date_end": "",
+    "Status": false,
+    "Hotel" : 1
+  },
+
+  "Destinations" :
+  {
+    "Id" : 1,
+    "City" : "",
+    "Country" : "",
+    "Image" : ""
   }
 }
