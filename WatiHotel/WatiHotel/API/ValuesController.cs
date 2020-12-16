@@ -19,26 +19,14 @@ namespace WatiHotel.API
     {
         private static readonly HttpClient client = new HttpClient();
 
-        Data mesData;
-
-        public struct Response
-        {
-            string error;
-            string message;
-
-            public Response(string uneError, string unMessage)
-            {
-                this.error = uneError;
-                this.message = unMessage;
-            }
-        }
-
         public Data MesData 
         {
             get
             {
+                //D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\WEB_SERVICES\TP\0-WatiHotel\watihotel\WatiHotel\WatiHotel\DataJson\webservice_watihotel_json_data.json
                 return JsonConvert.DeserializeObject<Data>(
-                    File.ReadAllText(@"D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\WEB_SERVICES\TP\0-WatiHotel\watihotel\WatiHotel\WatiHotel\DataJson\webservice_watihotel_json_data.json"));
+                    File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\webservice_watihotel_json_data.json")));
+                
             }
         }
         
@@ -131,7 +119,7 @@ namespace WatiHotel.API
         [HttpGet]
         public List<Reservation> GetAllReservations()
         {
-            return mesData.Reservations;
+            return MesData.Reservations;
         }
 
         /// <summary>
@@ -162,7 +150,7 @@ namespace WatiHotel.API
         [HttpGet]
         public List<Destination> GetAllDestinations()
         {
-            return mesData.Destinations;
+            return MesData.Destinations;
         }
 
         /// <summary>
@@ -191,38 +179,54 @@ namespace WatiHotel.API
         /// <returns></returns>
         // POST api/<controller>
         [HttpPost]
-        public Response PostReservation([FromBody] DateTime date_debut, DateTime date_fin, int id_hotel)
+        public Response PostReservation(DateTime date_debut, DateTime date_fin, int id_hotel)
         {
-            Response result;
+            Response result = new Response("","");
+            Boolean estDisponible = false;
 
-            Hotel monHotel = mesData.Hotels.Find(Hotel => Hotel.Id == id_hotel);
-
-            List<Reservation> allReservation =
-                (from num in mesData.Reservations
-                 where num.Date_start < date_debut && num.Date_end > date_fin && num.Hotel == id_hotel
-                 select num).ToList();
+            Hotel monHotel = MesData.Hotels.Find(Hotel => Hotel.Id == id_hotel);
 
             //check si l'hôtel de la réservation existe bien
             if (monHotel != null)
             {
+                if (monHotel.Disponibilites == null)
+                {
+                    monHotel.Disponibilites = new List<Disponible>();
+                }
                 foreach (DateTime day in EachDay(date_debut, date_fin))
                 {
-                    if (monHotel.Disponibilites.Find(Disponible => Disponible.Date_Room == day) != null )
+                    
+                    Disponible uneDisponible;
+                    if(monHotel.Disponibilites.Find(Disponible => Disponible.Date_Room == day) != null) 
                     {
-                        //ajout de la réservation
-                        mesData.Reservations.Add(new Reservation
-                        {
-                            Id = allReservation.Count() + 1,
-                            Date_start = date_debut,
-                            Date_end = date_fin,
-                            Hotel = id_hotel,
-                            Status = true,
-
-                        });
+                        uneDisponible = monHotel.Disponibilites.Find(Disponible => Disponible.Date_Room == day);
                     }
                     else
                     {
-                        result = new Response("error: Not Available", "Aucune chambre disponible pour cet hôtel");
+                        uneDisponible = null;
+                    }
+
+                    if (uneDisponible != null)
+                    {
+                        if (uneDisponible.Room_available > 0)
+                        {
+                            estDisponible = true;
+                            uneDisponible.Room_available = uneDisponible.Room_available - 1;
+                        }
+                        else
+                        {
+                            estDisponible = false;
+                            result = new Response("error: Not Available", "Plus de chambre disponible à cette période");
+                        }
+                    }
+                    else
+                    {
+                        monHotel.Disponibilites.Add(new Disponible
+                        {
+                            Date_Room = day,
+                            Room_available = monHotel.Room_max - 1
+                        });
+                        estDisponible = true;
                     }
                 }
                 
@@ -232,8 +236,19 @@ namespace WatiHotel.API
                 result = new Response("error: Not Available", "L'hôtel n'existe pas. Veuillez choisir un hôtel présent sur le liste !");
             }
 
-            result = new Response("Success: Reserversation complete", "La réservation pour l'hôtel " + monHotel.Name + " a bien été prise en compte !");
-
+            if (estDisponible)
+            {
+                //ajout de la réservation
+                MesData.Reservations.Add(new Reservation
+                {
+                    Id = MesData.Reservations.Count() + 1,
+                    Date_start = date_debut,
+                    Date_end = date_fin,
+                    Hotel = id_hotel,
+                    Status = false,
+                });
+                result = new Response("Success: Reserversation complete", "La réservation pour l'hôtel " + monHotel.Name + " a bien été prise en compte !");
+            }
             return result;
         }
 

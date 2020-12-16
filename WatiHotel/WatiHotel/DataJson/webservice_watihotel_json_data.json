@@ -9,7 +9,8 @@
       "Price": 77,
       "Room_available": 30,
       "Room_max": 30,
-      "Image": "https://lh3.googleusercontent.com/p/AF1QipMLnzn6zVZ_mk0Obgl5uyGKPUwYQQy0f9h0Y3as=w296-h202-n-k-rw-no-v1"
+      "Image": "https://lh3.googleusercontent.com/p/AF1QipMLnzn6zVZ_mk0Obgl5uyGKPUwYQQy0f9h0Y3as=w296-h202-n-k-rw-no-v1",
+      "Disponible": null
     },
     {
       "Id": 2,
@@ -20,7 +21,8 @@
       "Price": 118,
       "Room_available": 50,
       "Room_max": 50,
-      "Image": "https://lh3.googleusercontent.com/p/AF1QipOsBE7khDdkbHtIu_iWWX5n4z7LjiriwtMmdG0L=w296-h202-n-k-rw-no-v1"
+      "Image": "https://lh3.googleusercontent.com/p/AF1QipOsBE7khDdkbHtIu_iWWX5n4z7LjiriwtMmdG0L=w296-h202-n-k-rw-no-v1",
+      "Disponible": null
     },
     {
       "Id": 3,
@@ -31,7 +33,8 @@
       "Price": 970,
       "Room_available": 120,
       "Room_max": 120,
-      "Image": "https://lh3.googleusercontent.com/p/AF1QipM9KBbqwWXG2-I5_WfSg_YxrJe8l404ug9V7niG=w296-h202-n-k-rw-no-v1"
+      "Image": "https://lh3.googleusercontent.com/p/AF1QipM9KBbqwWXG2-I5_WfSg_YxrJe8l404ug9V7niG=w296-h202-n-k-rw-no-v1",
+      "Disponible": null
     },
     {
       "Id": 4,
@@ -42,7 +45,8 @@
       "Price": 90,
       "Room_available": 75,
       "Room_max": 75,
-      "Image": "https://lh3.googleusercontent.com/proxy/_a39aHqwne9swd1cXZiYDE9fmhaV9CrKYtgIiPrfUfoNtq9h9r27Vtngl8xYpLyDE73Csba7jp-ZhpjWSnb7M6y4JNb4DR47afUOFE86Z2exiZQbOermc7kNay0kfLzuJZ-t4m77Pz0AOvvaTs-iiNXBXfs3Dw=w296-h202-n-k-rw-no-v1"
+      "Image": "https://lh3.googleusercontent.com/proxy/_a39aHqwne9swd1cXZiYDE9fmhaV9CrKYtgIiPrfUfoNtq9h9r27Vtngl8xYpLyDE73Csba7jp-ZhpjWSnb7M6y4JNb4DR47afUOFE86Z2exiZQbOermc7kNay0kfLzuJZ-t4m77Pz0AOvvaTs-iiNXBXfs3Dw=w296-h202-n-k-rw-no-v1",
+      "Disponible": null
     },
     {
       "Id": 5,
@@ -53,7 +57,8 @@
       "Price": 36,
       "Room_available": 150,
       "Room_max": 150,
-      "Image": "https://lh3.googleusercontent.com/proxy/PKAcW8C0-KXPDYmuvCwgtdofsiSZuJBQ_cEQNxcKw4eWvbzi0dG9UzUC42vYfj3_Nlt-On_IPNIGeM0Y94PmGY8ODBzbSBrkjYTGLdof6EZRb7LMgAcjTNH9LCFe-WyPOEwUUoSnmP6tk_s0NgASA5vjtGYtqw=w296-h202-n-k-rw-no-v1"
+      "Image": "https://lh3.googleusercontent.com/proxy/PKAcW8C0-KXPDYmuvCwgtdofsiSZuJBQ_cEQNxcKw4eWvbzi0dG9UzUC42vYfj3_Nlt-On_IPNIGeM0Y94PmGY8ODBzbSBrkjYTGLdof6EZRb7LMgAcjTNH9LCFe-WyPOEwUUoSnmP6tk_s0NgASA5vjtGYtqw=w296-h202-n-k-rw-no-v1",
+      "Disponible": null
     },
     {
       "Id": 6,
@@ -64,7 +69,8 @@
       "Price": 44,
       "Room_available": 80,
       "Room_max": 80,
-      "Image": "https://lh3.googleusercontent.com/proxy/KDbSefPC9iJkxMOwiXpMGVTeIYr-ubaEtaet0vnBGDHi7-CVrY8j-piIywD2o71t92mywJ4lBFAxnqTPmQ5KD5wCZjHKNm24fgy0wWi4IsXlgXgEQRGVPqac_z6YfTXofuWHTObyCA0bXjd4BLgDj31tiIauwQ=w296-h202-n-k-rw-no-v1"
+      "Image": "https://lh3.googleusercontent.com/proxy/KDbSefPC9iJkxMOwiXpMGVTeIYr-ubaEtaet0vnBGDHi7-CVrY8j-piIywD2o71t92mywJ4lBFAxnqTPmQ5KD5wCZjHKNm24fgy0wWi4IsXlgXgEQRGVPqac_z6YfTXofuWHTObyCA0bXjd4BLgDj31tiIauwQ=w296-h202-n-k-rw-no-v1",
+      "Disponible": null
     },
     {
       "Id": 7,
@@ -75,7 +81,8 @@
       "Price": 456,
       "Room_available": 250,
       "Room_max": 250,
-      "Image": "https://lh3.googleusercontent.com/p/AF1QipNQWZQu6-3jxUvajVthqGbvfZPn45PmyQzxOrtl=w296-h202-n-k-rw-no-v1"
+      "Image": "https://lh3.googleusercontent.com/p/AF1QipNQWZQu6-3jxUvajVthqGbvfZPn45PmyQzxOrtl=w296-h202-n-k-rw-no-v1",
+      "Disponible": null
     },
     {
       "Id": 8,
@@ -86,7 +93,8 @@
       "Price": 112,
       "Room_available": 99,
       "Room_max": 100,
-      "Image": "https://lh3.googleusercontent.com/p/AF1QipPps1BTwN8n50T7C2LRE-yZnA1Fw1T3JSxhIYT4=w296-h202-n-k-rw-no-v1"
+      "Image": "https://lh3.googleusercontent.com/p/AF1QipPps1BTwN8n50T7C2LRE-yZnA1Fw1T3JSxhIYT4=w296-h202-n-k-rw-no-v1",
+      "Disponible": null
     }
   ],
 
@@ -101,8 +109,7 @@
     }
   ],
 
-  "Destinations" :
-  [
+  "Destinations": [
     {
       "Id": 1,
       "City": "Laval",

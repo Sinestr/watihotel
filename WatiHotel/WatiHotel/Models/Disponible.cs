@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace WatiHotel.Models
 {
+    [DataContract]
+    [JsonObject(MemberSerialization.OptOut)]
     public class Disponible
     {
         /// <summary>
