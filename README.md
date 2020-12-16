@@ -123,7 +123,7 @@ des actions précises sur les données Wati Hotel (REQUETE POST).
 
 ### Requêtes GET
 
-* **[Route("watiHotel")]**  
+* **http://watihotelapi.azurewebsites.net/watiHotel**  
     * Liste de tous les hôtels partenaires, de toutes les destinations et de réservations.
     
 * **http://watihotelapi.azurewebsites.net/watiHotel/hotels** 
