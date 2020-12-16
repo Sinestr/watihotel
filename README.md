@@ -151,7 +151,7 @@ des actions précises sur les données Wati Hotel (REQUETE POST).
     
 *****
     
-### Requêtes GET  
+### Requêtes POST  
 
 #### Réserver un hôtel
 En effet le but de cette requête est d'envoyer une nouvelle réservation. 
@@ -162,22 +162,31 @@ Pour cela il va falloir envoyer :
 
 Toutes les données correspondantes (**cf. Model de ressources**).
 
+Si tout ce passe bien on retourne :
+```
+"Type": "Success: Reserversation complete",
+"Message": "La réservation pour l'hôtel Hotel Marin Contact Hotel a bien été prise en compte !"
+``` 
+
 Si jamais la réservation ne s'éffectue pas, c'est qu'on retourne une erreur. 
 En voici la liste : 
-  ```
-  "error" : "Not Available" [type=string]
-  "message" : "Aucune chambre disponible pour cet hôtel" [type=string]
-  ```  
+```
+"error" : "Not Available" [type=string]
+"message" : "Aucune chambre disponible pour cet hôtel" [type=string]
+```  
 
 ```
-  "error" : "Not Found" [type=string]
-  "message" : "L'hôtel n'existe pas. Veuillez choisir un hôtel présent sur le liste !" [type=string]
-  ```
+"error" : "Not Found" [type=string]
+"message" : "L'hôtel n'existe pas. Veuillez choisir un hôtel présent sur le liste !" [type=string]
+```
 
-  ```
-  "error" : "Error Date" [type=string]
-  "message" : "Dates de réservation incorrectes" [type=string]
-  ```
+```
+"error" : "Error Date" [type=string]
+"message" : "Dates de réservation incorrectes" [type=string]
+```
+
+
+
 
 
 
