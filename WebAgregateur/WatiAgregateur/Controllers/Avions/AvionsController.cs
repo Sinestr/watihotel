@@ -1,19 +1,21 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using WatiAgregateur.Models.AvionsMP;
 
 namespace WatiAgregateur.Controllers
 {
     [Route("watiAgrega/Avions")]
     public class AvionsController : ApiController
     {
-        [Route("GetAvions")]
+        [Route("GetVols")]
         [HttpGet]
-        public string GetAvions()
+        public RootVolMP GetVols()
         {
             //Préparation de la requête
             string method = "GET";
@@ -24,11 +26,19 @@ namespace WatiAgregateur.Controllers
             req.ContentType = "application/json";
             req.Headers.Add("Api-token:" + "ZPDpXWyKDeavzEDXtMHip89eGN9gSuRzasoDrTc9vKo27YIxJ9");
             //Appel de la requête
-            HttpWebResponse myHttpWebResponse = (HttpWebResponse)req.GetResponse();
+            HttpWebResponse rep = (HttpWebResponse)req.GetResponse();
 
-            var repStream = myHttpWebResponse.GetResponseStream();
+            RootVolMP maRoot = new RootVolMP()
+            {
+                Links = new LinksMP(),
+                Data = new List<VolMP>()
+            };
+
+            var repStream = rep.GetResponseStream();
             var reader = new StreamReader(repStream);
-            return reader.ReadToEnd();
+            maRoot = JsonConvert.DeserializeObject<RootVolMP>(reader.ReadToEnd().ToString());
+
+            return maRoot;
         }
 
         [Route("Get")]
