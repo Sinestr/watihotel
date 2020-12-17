@@ -155,6 +155,8 @@ des actions précises sur les données Wati Hotel (REQUETE POST).
 ### Requêtes POST  
 
 #### Réserver un hôtel
+http://watihotelapi.azurewebsites.net/test?date_debut=2020-12-15&date_fin=2020-12-16&id_hotel=1 
+
 En effet le but de cette requête est d'envoyer une nouvelle réservation. 
 Pour cela il va falloir envoyer :
  * une date de début de réservation
