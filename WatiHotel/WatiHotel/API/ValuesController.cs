@@ -14,7 +14,7 @@ using WebService.WatiHotel;
 
 namespace WatiHotel.API
 {
-    [Route("test")]
+    [Route("watiapi")]
     public class ValuesController : ApiController
     {
         private static readonly HttpClient client = new HttpClient();
@@ -169,6 +169,7 @@ namespace WatiHotel.API
         /// <param name="value"></param>
         /// <returns></returns>
         // POST api/<controller>
+        [Route("reservation")]
         [HttpPost]
         public Response PostReservation(DateTime date_debut, DateTime date_fin, int id_hotel)
         {
