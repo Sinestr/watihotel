@@ -9,12 +9,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WatiHotel.Models;
 using WebService.WatiHotel;
 
 namespace WatiHotel.API
 {
     [Route("watiapi")]
+    [EnableCors(origins: "http://watihotelapi.azurewebsites.net/", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
         private static readonly HttpClient client = new HttpClient();

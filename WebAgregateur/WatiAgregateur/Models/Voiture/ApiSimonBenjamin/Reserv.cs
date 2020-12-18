@@ -9,24 +9,31 @@ namespace WatiAgregateur.Models.Voiture.ApiSimonBenjamin
 {
     [DataContract]
     [JsonObject(MemberSerialization.OptOut)]
-    public class Reservation
+    public class Reserv
     {
         #region Fields
+        [JsonProperty("id")]
         private int _Id;
+
+        [JsonProperty("carId")]
         private int _CarId;
-        private DateTime _Begin;
-        private DateTime _End;
+
+        [JsonProperty("begin")]
+        private string _Begin;
+
+        [JsonProperty("end")]
+        private string _End;
         #endregion
 
         #region Properties
         public int Id { get => _Id; set => _Id = value; }
         public int CarId { get => _CarId; set => _CarId = value; }
-        public DateTime Begin { get => _Begin; set => _Begin = value; }
-        public DateTime End { get => _End; set => _End = value; }
+        public string Begin { get => _Begin; set => _Begin = value; }
+        public string End { get => _End; set => _End = value; }
         #endregion
 
         #region Construct
-        public Reservation() { }
+        public Reserv() { }
         #endregion
     }
 }
