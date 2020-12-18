@@ -6,6 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using WatiAgregateur.Controllers.Avions;
+using WatiAgregateur.Models;
+using WatiAgregateur.Models.Avion;
+using WatiAgregateur.Models.Avion.AvionsKM;
+using WatiAgregateur.Models.Avion.AvionsKM.Root;
 using WatiAgregateur.Models.AvionsMP;
 
 namespace WatiAgregateur.Controllers
@@ -13,40 +18,93 @@ namespace WatiAgregateur.Controllers
     [Route("watiAgrega/Avions")]
     public class AvionsController : ApiController
     {
-        [Route("GetVols")]
+        APIController monAPIController = new APIController();
+
+        [Route("GetAvions")]
         [HttpGet]
-        public RootVolMP GetVols()
+        public List<Avion> GetAvions()
         {
-            //Préparation de la requête
-            string method = "GET";
-            string query = "https://trivaphp.herokuapp.com/api/planes";
-            //Création de la requête
-            HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(query);
-            req.Method = method;
-            req.ContentType = "application/json";
-            req.Headers.Add("Api-token:" + "ZPDpXWyKDeavzEDXtMHip89eGN9gSuRzasoDrTc9vKo27YIxJ9");
-            //Appel de la requête
-            HttpWebResponse rep = (HttpWebResponse)req.GetResponse();
+            List<Avion> result = new List<Avion>();
+            int unID = 0;
 
-            RootVolMP maRoot = new RootVolMP()
+            //On cherche tout les avions depuis l'API de Marine et Peter
+            RootAvionMP maRootMP = GetAvionMP();
+
+            //Pour chaque avion de leur API, on créer un avion selon nos critères et on l'ajoute à notre collection "result"
+            foreach (AvionMP unAvionMP in maRootMP.Data)
             {
-                Links = new LinksMP(),
-                Data = new List<VolMP>()
-            };
+                result.Add(new Avion()
+                {
+                    Id = unID,
+                    Name = unAvionMP.Name,
+                    Capacity = int.Parse(unAvionMP.Capacity),
+                    TypeAPI = "AvionMP"
+                });
+                unID++;
+            }
 
-            var repStream = rep.GetResponseStream();
-            var reader = new StreamReader(repStream);
-            maRoot = JsonConvert.DeserializeObject<RootVolMP>(reader.ReadToEnd().ToString());
+            //On cherche tout les avions depuis l'API de Kévin et Morgan
+            RootAvionKM maRootKM = GetAvionKM();
 
-            return maRoot;
+            //Pour chaque avion de leur API, on créer un avion selon nos critères et on l'ajoute à notre collection "result"
+            foreach (AvionKM unAvionKM in maRootKM.Avions)
+            {
+                result.Add(new Avion()
+                {
+                    Id = unID,
+                    Name = unAvionKM.Label,
+                    Capacity = unAvionKM.Seats,
+                    TypeAPI = "AvionKM"
+                });
+                unID++;
+            }
+
+
+            return result;
         }
 
-        [Route("Get")]
-        [HttpGet]
-        public string Get()
+        /// <summary>
+        ///     Permet de récupérer tout les avions de l'API de Marine et Peter
+        /// </summary>
+        /// <returns></returns>
+        public RootAvionMP GetAvionMP()
         {
-            return "toto et si c'est déjà prit, return titi";
+            List<string> mesHeaders = new List<string>();
+            mesHeaders.Add("Api-token:" + "ZPDpXWyKDeavzEDXtMHip89eGN9gSuRzasoDrTc9vKo27YIxJ9");
+
+            RootAvionMP maRootMP = new RootAvionMP()
+            {
+                Links = new LinksMP(),
+                Data = new List<AvionMP>()
+            };
+
+            var repStream = monAPIController.ReqAPI("GET", "https://trivaphp.herokuapp.com/api/planes", mesHeaders).GetResponseStream();
+            var reader = new StreamReader(repStream);
+            maRootMP = JsonConvert.DeserializeObject<RootAvionMP>(reader.ReadToEnd().ToString());
+
+            return maRootMP;
+        }
+
+        /// <summary>
+        ///     Permet de récupérer tout les avions de l'API de Kévin et Morgan
+        /// </summary>
+        /// <returns></returns>
+        public RootAvionKM GetAvionKM()
+        {
+            List<string> mesHeaders = new List<string>();
+
+            RootAvionKM maRootKM = new RootAvionKM()
+            {
+                Avions = new List<AvionKM>()
+            };
+
+            var repStream = monAPIController.ReqAPI("GET", "https://tp-api-rest-service-avion.herokuapp.com/index.php/api/planes", mesHeaders).GetResponseStream();
+            var reader = new StreamReader(repStream);
+            maRootKM = JsonConvert.DeserializeObject<RootAvionKM>(reader.ReadToEnd().ToString());
+
+            return maRootKM;
         }
 
     }
 }
+

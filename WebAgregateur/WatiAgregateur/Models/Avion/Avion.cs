@@ -4,20 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WatiAgregateur.Models.AvionsMP
+namespace WatiAgregateur.Models.Avion
 {
-    public class VillesMP
+    public class Avion
     {
+        #region Fields
         [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("created_at")]
-        public string CreatedAt { get; set; }
+        [JsonProperty("capacity")]
+        public int Capacity { get; set; }
 
-        [JsonProperty("updated_at")]
-        public string UpdatedAt { get; set; }
+        [JsonProperty("typeAPI")]
+        public string TypeAPI { get; set; }
+        #endregion
     }
 }

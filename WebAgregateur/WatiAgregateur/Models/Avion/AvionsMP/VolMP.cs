@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WatiAgregateur.Models.AvionsMP
 {
-    public class VolMP : Object
+    public class VolMP
     {
         #region Fields
         int id;
