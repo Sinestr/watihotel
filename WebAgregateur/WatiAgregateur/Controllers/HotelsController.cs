@@ -5,7 +5,9 @@ using System.Web;
 
 namespace WatiAgregateur.Controllers
 {
+
     public class HotelsController
     {
+
     }
 }
