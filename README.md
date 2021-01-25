@@ -1,10 +1,13 @@
 # Documentation webservice WATIHOTEL
 <!-- toc -->
-- [Introduction](##Introduction)
+
+- [Introduction](#introduction)
+- [Modèles des ressources](#modles-des-ressources)
+    - [Ressources d'un hôtel](#ressources-dun-htel)
 
 <!-- tocstop -->
 
-##Introduction 
+## Introduction 
 Bienvenue dans la documentation du webservice watiHotel. 
 Dans cette documentation nous étudierons l'utilisation 
 et la construction du webservice watiHotel. 
