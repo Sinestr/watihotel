@@ -1,19 +1,22 @@
 # Documentation webservice WATIHOTEL
+<!-- toc -->
+- [Introduction](##Introduction)
 
+<!-- tocstop -->
 
-## Introduction 
+##Introduction 
 Bienvenue dans la documentation du webservice watiHotel. 
-Dans cette documentation nous étudierons l'utilisation et 
-la construction du webservice watiHotel. 
+Dans cette documentation nous étudierons l'utilisation 
+et la construction du webservice watiHotel. 
 
 En effet, ce webservice permet notament de récupérer
 la liste de tous les hôtels partenaires,
 ainsi que toutes les destinations disponibles.
 
 Ici le principe est simple, seulement deux type d'objet sont présent
-dans les données :
+dans les `données` :
 
-* **hotels** : 
+* **`hotels`** : 
 Liste de tous les hôtels partenaires.
 
 * **destinations** : 
